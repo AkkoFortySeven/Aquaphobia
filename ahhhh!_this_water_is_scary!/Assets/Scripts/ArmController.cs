@@ -13,6 +13,7 @@ public class ArmController : MonoBehaviour
     [SerializeField] private ActivateOnGrab onGrab;
     [SerializeField] private Rigidbody targetRb;
     [SerializeField] private float matchSpeed;
+    [SerializeField] private Vector3 handOffset; //rotational offset so the hand is aligned when grabbed;
 
 
     [Header("Audio")]
@@ -39,10 +40,10 @@ public class ArmController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if (onGrab.grabbed)
-        {
+        //  if (onGrab.grabbed)
+        //{
             MoveToTarget();
-        }
+        //}
     }
 
     void MoveToTarget()
@@ -61,7 +62,7 @@ public class ArmController : MonoBehaviour
         targetRb.velocity = (dir * matchSpeed);
 
         audo.pitch = (1 + targetRb.velocity.magnitude); //range between 0 and ~0.7
-        armPosition.rotation = controllerPosition.rotation;
+        armPosition.rotation = controllerPosition.rotation * Quaternion.Euler(handOffset);
 
         //Handle arm audio
         if (isPlaying && dir.magnitude < playThreshold)
