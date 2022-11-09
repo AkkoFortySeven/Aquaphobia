@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using Valve.VR.InteractionSystem;
+using Valve.VR;
 
 [RequireComponent(typeof(Collider))]
 public class Hologram : MonoBehaviour
