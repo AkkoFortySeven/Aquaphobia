@@ -14,6 +14,10 @@ public class Hologram : MonoBehaviour
     public Interactable Interactable;
     public Vector3 currentPosition;
 
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform pilotSeat;
+    [SerializeField] private SteamVR_ActionSet deactivateOnGrab;
+
     [SerializeField]
     private bool isControllerDefaultPosition;
 
@@ -38,11 +42,17 @@ public class Hologram : MonoBehaviour
          {
              currentPosition = this.transform.parent.position;
              positionDifference = hologramReferencePoint.transform.position - currentPosition;
+             ResetPlayerPosition();
          }
          else
          {
              positionDifference = new Vector3(0, 0, 0);
          }
+    }
+
+    private void ResetPlayerPosition()
+    {
+        player.position = pilotSeat.position;
     }
 }
            
