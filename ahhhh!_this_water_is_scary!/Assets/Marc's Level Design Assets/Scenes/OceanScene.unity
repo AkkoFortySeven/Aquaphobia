@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d684ffd55da781b46b1396d493bb5e59,
+    type: 2}
   m_LightingSettings: {fileID: 999063679}
 --- !u!196 &4
 NavMeshSettings:
@@ -1207,7 +1208,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6940246184706110475, guid: 11e8fe305043203448bca7f9ded80268, type: 3}
 --- !u!1 &1849453777
