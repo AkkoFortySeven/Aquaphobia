@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadArea : MonoBehaviour
 {
     //[SerializeField] private string sceneName;
+    
 
     public void LoadSection(string sceneName)
     {
@@ -16,4 +17,6 @@ public class LoadArea : MonoBehaviour
     {
         AsyncOperation unloadAsync = SceneManager.UnloadSceneAsync(sceneName);
     }
+    
+
 }

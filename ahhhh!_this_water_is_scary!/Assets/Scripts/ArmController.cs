@@ -14,6 +14,7 @@ public class ArmController : MonoBehaviour
     [SerializeField] private Rigidbody targetRb;
     [SerializeField] private float matchSpeed;
     [SerializeField] private Vector3 handOffset; //rotational offset so the hand is aligned when grabbed;
+    [SerializeField] private float scaleFactor = 1f;
 
 
     [Header("Audio")]
@@ -49,7 +50,7 @@ public class ArmController : MonoBehaviour
     void MoveToTarget()
     {
         Vector3 controllerOffset = controllerHomePosition.position - controllerPosition.position;
-        Vector3 target = armHomePosition.position - controllerOffset;
+        Vector3 target = armHomePosition.position - (controllerOffset * scaleFactor);
         
 
         Vector3 dir = (target - armPosition.position).normalized;
