@@ -113,7 +113,7 @@ public class SubmarineMovementController : MonoBehaviour
         if (hologram.positionDifference.x < -xMinThreshold)
         {  //left
             currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleLeftVelocity = new Vector3(0, -currentRotateSpeed, 0);
+            EulerAngleLeftVelocity = new Vector3(0, currentRotateSpeed, 0);
             Quaternion deltaLeftRotation = Quaternion.Euler(
                     EulerAngleLeftVelocity * Time.fixedDeltaTime
                 );
@@ -123,7 +123,7 @@ public class SubmarineMovementController : MonoBehaviour
         if (hologram.positionDifference.x > xMinThreshold)
         {  //right
             currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleRightVelocity = new Vector3(0, currentRotateSpeed, 0);
+            EulerAngleRightVelocity = new Vector3(0, -currentRotateSpeed, 0);
             Quaternion deltaRightRotation = Quaternion.Euler(
                     EulerAngleRightVelocity * Time.fixedDeltaTime
                 );
