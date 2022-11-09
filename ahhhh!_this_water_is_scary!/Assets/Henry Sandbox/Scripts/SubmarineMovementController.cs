@@ -89,19 +89,19 @@ public class SubmarineMovementController : MonoBehaviour
         if (hologram.positionDifference.y < -yMinThreshold)
         {  //down
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(transform.up * currentFloatSpeed);
+            rb.AddForce(-transform.up * currentFloatSpeed);
         }
 
         if (hologram.positionDifference.y > yMinThreshold)
         {  //up
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(-transform.up * currentFloatSpeed);
+            rb.AddForce(transform.up * currentFloatSpeed);
         }
 
         if (hologram.positionDifference.z < -zMinThreshold)
         {  //backward
-            currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxFloatSpeed, thrustPercentageChange);
-            rb.AddForce(-transform.forward * maxThrustSpeed);
+            currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
+            rb.AddForce(-transform.forward * currentThrustSpeed);
         }
 
         if (hologram.positionDifference.z > zMinThreshold)
@@ -113,16 +113,21 @@ public class SubmarineMovementController : MonoBehaviour
         if (hologram.positionDifference.x < -xMinThreshold)
         {  //left
             currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleLeftVelocity = new Vector3(0, currentRotateSpeed, 0);
-            Quaternion deltaLeftRotation = Quaternion.Euler(EulerAngleLeftVelocity * Time.fixedDeltaTime);
+            EulerAngleLeftVelocity = new Vector3(0, -currentRotateSpeed, 0);
+            Quaternion deltaLeftRotation = Quaternion.Euler(
+                    EulerAngleLeftVelocity * Time.fixedDeltaTime
+                );
             rb.MoveRotation(rb.rotation * deltaLeftRotation);
         }
 
         if (hologram.positionDifference.x > xMinThreshold)
         {  //right
             currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleRightVelocity = new Vector3(0, -currentRotateSpeed, 0);
-            Quaternion deltaRightRotation = Quaternion.Euler(EulerAngleRightVelocity * Time.fixedDeltaTime);
+            EulerAngleRightVelocity = new Vector3(0, currentRotateSpeed, 0);
+            Quaternion deltaRightRotation = Quaternion.Euler(
+                    EulerAngleRightVelocity * Time.fixedDeltaTime
+                );
+
             rb.MoveRotation(rb.rotation * deltaRightRotation);
         }
     }
