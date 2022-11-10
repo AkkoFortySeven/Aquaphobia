@@ -19,6 +19,9 @@ public class Hologram : MonoBehaviour
     [SerializeField] private Transform pilotSeat;
     [SerializeField] private SteamVR_ActionSet deactivateOnGrab;
 
+    public SteamVR_Action_Single rightTrig;
+    public SteamVR_Action_Single leftTrig;
+
     [SerializeField]
     private bool isControllerDefaultPosition;
 

@@ -89,7 +89,7 @@ public class SubmarineMovementController : MonoBehaviour
        /* if (hologram.positionDifference.y < -yMinThreshold)
         {  //down
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(transform.up * currentFloatSpeed);
+            
         }
 
         if (hologram.positionDifference.y > yMinThreshold)
@@ -130,6 +130,16 @@ public class SubmarineMovementController : MonoBehaviour
 
             rb.MoveRotation(rb.rotation * deltaRightRotation);
         }
+    }
+
+    public void MoveUp()
+    {
+        rb.AddForce(transform.up * currentFloatSpeed);
+    }
+
+    public void MoveDown()
+    {
+        rb.AddForce(-transform.up * currentFloatSpeed);
     }
 
     private void calculateLerpScale()
