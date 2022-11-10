@@ -11,13 +11,18 @@ public class MessageAudioManager : MonoBehaviour
 
     AudioClip secondMessage;
 
+    AudioClip thirdMessage;
+    bool thirdMessagePlayed;
+    AudioClip fourthMessage;
+    bool fourthMessagePlayed;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource.GetComponent<AudioSource>();
         audioSource.playOnAwake = true;
         firstMessagePlayed = false;
-                StartCoroutine(playStartingMessages());
+        StartCoroutine(playStartingMessages());
     }
 
     // Update is called once per frame
@@ -26,9 +31,22 @@ public class MessageAudioManager : MonoBehaviour
 
     }
 
-    void PlaySoundOnce(AudioClip clip)
+    void PlayThirdMessage()
     {
-        audioSource.PlayOneShot(clip);
+        if (!thirdMessagePlayed)
+        {
+            audioSource.PlayOneShot(thirdMessage);
+            thirdMessagePlayed = true;
+        }
+
+    }
+
+    void PlayFourthMessage()
+    {
+        if(!fourthMessagePlayed){
+        audioSource.PlayOneShot(fourthMessage);
+        fourthMessagePlayed = true;
+        }
     }
 
     IEnumerator playStartingMessages()
