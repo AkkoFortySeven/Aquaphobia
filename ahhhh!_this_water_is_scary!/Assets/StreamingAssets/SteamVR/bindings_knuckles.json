@@ -123,24 +123,6 @@
             },
             {
                "inputs" : {
-                  "force" : {
-                     "output" : "/actions/default/in/squeeze"
-                  }
-               },
-               "mode" : "force_sensor",
-               "path" : "/user/hand/left/input/grip"
-            },
-            {
-               "inputs" : {
-                  "force" : {
-                     "output" : "/actions/default/in/squeeze"
-                  }
-               },
-               "mode" : "force_sensor",
-               "path" : "/user/hand/right/input/grip"
-            },
-            {
-               "inputs" : {
                   "click" : {
                      "output" : "/actions/default/in/interactui"
                   }
@@ -253,6 +235,24 @@
                },
                "mode" : "joystick",
                "path" : "/user/hand/left/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/default/in/squeeze"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/default/in/squeeze"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       },
@@ -322,6 +322,7 @@
    "category" : "steamvr_input",
    "controller_type" : "knuckles",
    "description" : "",
+   "interaction_profile" : "",
    "name" : "knuckles_default",
    "options" : {},
    "simulated_actions" : []
