@@ -9,6 +9,7 @@ public class ArmGrab : MonoBehaviour
     public SteamVR_Action_Single trigger = SteamVR_Input.GetAction<SteamVR_Action_Single>("submarine", "Grab");
     [SerializeField] private Animator clawAnim;
     private ActivateOnGrab onGrab;
+    [SerializeField] private Interactable interact;
 
     [SerializeField] private GameObject grabbedObject;
     [SerializeField] private Transform grabPosition;
@@ -34,9 +35,9 @@ public class ArmGrab : MonoBehaviour
 
     private void Update()
     {
-        if (onGrab.grabbed)
+        if (interact.attachedToHand)
         {
-            grab = trigger.GetAxis(onGrab.hand);
+            grab = trigger.GetAxis(interact.attachedToHand.handType);
             Debug.Log("Grab: " + grab);
             clawAnim.SetFloat(grabHash, grab);
         }
