@@ -86,28 +86,28 @@ public class SubmarineMovementController : MonoBehaviour
 
     private void MovementDirection()
     {
-        if (hologram.positionDifference.y < -yMinThreshold)
+       /* if (hologram.positionDifference.y < -yMinThreshold)
         {  //down
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(-transform.up * currentFloatSpeed);
+            rb.AddForce(transform.up * currentFloatSpeed);
         }
 
         if (hologram.positionDifference.y > yMinThreshold)
         {  //up
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(transform.up * currentFloatSpeed);
-        }
+            rb.AddForce(-transform.up * currentFloatSpeed);
+        }*/
 
         if (hologram.positionDifference.z < -zMinThreshold)
         {  //backward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
-            rb.AddForce(-transform.forward * currentThrustSpeed);
+            rb.AddForce(transform.forward * currentThrustSpeed);
         }
 
         if (hologram.positionDifference.z > zMinThreshold)
         {  //forward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
-            rb.AddForce(transform.forward * currentThrustSpeed);
+            rb.AddForce(-transform.forward * currentThrustSpeed);
         }
 
         if (hologram.positionDifference.x < -xMinThreshold)
