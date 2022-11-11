@@ -48,9 +48,11 @@ public class Hologram : MonoBehaviour
             if (interactable.attachedToHand)
          {
             //CheckHand();
-            sumDifference = this.transform.parent.localPosition - this.transform.localPosition;
+            //sumDifference = this.transform.parent.localPosition - this.transform.localPosition;
              //currentPosition = this.transform.parent.localPosition;
-             positionDifference = hologramReferencePoint.transform.localPosition - sumDifference;
+             //positionDifference = hologramReferencePoint.transform.localPosition - sumDifference;
+             positionDifference = hologramReferencePoint.transform.position - this.transform.position;
+             
              ResetPlayerPosition();
          }
          else
@@ -88,7 +90,7 @@ public class Hologram : MonoBehaviour
 
     private void ResetPlayerPosition()
     {
-        player.position = pilotSeat.local.position;
+        player.position = pilotSeat.position;
     }
 }
            
