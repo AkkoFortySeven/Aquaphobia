@@ -15,6 +15,7 @@ public class Hologram : MonoBehaviour
     public Interactable interactable;
     public Vector3 currentPosition;
     public SubmarineMovementController subEngine;
+    public Vector3 sumDifference;
 
     [SerializeField] private Transform player;
     [SerializeField] private Transform pilotSeat;
@@ -47,8 +48,11 @@ public class Hologram : MonoBehaviour
             if (interactable.attachedToHand)
          {
             //CheckHand();
-             currentPosition = this.transform.parent.localPosition;
-             positionDifference = hologramReferencePoint.transform.localPosition - currentPosition;
+            //sumDifference = this.transform.parent.localPosition - this.transform.localPosition;
+             //currentPosition = this.transform.parent.localPosition;
+             //positionDifference = hologramReferencePoint.transform.localPosition - sumDifference;
+             positionDifference = hologramReferencePoint.transform.position - this.transform.position;
+             
              ResetPlayerPosition();
          }
          else

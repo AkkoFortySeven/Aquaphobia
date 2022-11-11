@@ -18,6 +18,8 @@ public class SubmarineMovementController : MonoBehaviour
     [SerializeField]
     Vector3 positionDifference;
 
+    [SerializeField] private Transform tracker;
+
 
 
     [SerializeField]
@@ -84,52 +86,156 @@ public class SubmarineMovementController : MonoBehaviour
         
     }
 
+    // private void MovementDirection()
+    // {
+    //     //var savePos = rb.transform.rotation;
+    //     //rb.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+
+    //    if (hologram.positionDifference.y < -yMinThreshold)
+    //     {  //down
+    //         currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
+    //         rb.AddForce(rb.transform.up * currentFloatSpeed);
+    //     }
+
+        
+
+    //     if (hologram.positionDifference.y > yMinThreshold)
+    //     {  //up
+    //         currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
+    //         rb.AddForce(-rb.transform.up * currentFloatSpeed);
+    //     }
+
+        
+
+    //     if (hologram.positionDifference.z < -zMinThreshold)
+    //     {  //backward
+    //         currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
+            
+    //         rb.AddForce(rb.transform.forward * currentThrustSpeed);
+    //     }
+
+        
+    //     if (hologram.positionDifference.z > zMinThreshold)
+    //     {  //forward
+    //         currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
+            
+    //         rb.AddForce(-rb.transform.forward * currentThrustSpeed);
+    //     }
+
+        
+    //     Vector3 rot = new Vector3(0f, 0.5f, 0f);
+    //     if (hologram.positionDifference.x < -xMinThreshold)
+    //     {  //left
+    //         // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
+    //         // EulerAngleLeftVelocity = new Vector3(0, currentRotateSpeed, 0);
+    //         // Quaternion deltaLeftRotation = Quaternion.Euler(
+    //         //         EulerAngleLeftVelocity * Time.fixedDeltaTime
+    //         //     );
+
+            
+            
+    //         //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y + 0.5f, rb.transform.rotation.z));
+
+    //         rb.transform.Rotate(0f, -0.3f, 0f, Space.Self);
+
+            
+    //         //rb.MoveRotation(rb.rotation * Quaternion.Euler(rot));
+    //     }
+
+    //     if (hologram.positionDifference.x > xMinThreshold)
+    //     {  //right
+    //         // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
+    //         // EulerAngleRightVelocity = new Vector3(0, -currentRotateSpeed, 0);
+    //         // Quaternion deltaRightRotation = Quaternion.Euler(
+    //         //         EulerAngleRightVelocity * Time.fixedDeltaTime
+    //         //     );
+
+    //         //rb.transform.rotation = savePos;
+    //         Vector3 pososso = new Vector3(0f, 1f, 0f);
+    //         rb.transform.Rotate(pososso, 1f, Space.Self);
+            
+    //         //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y - 0.1f, rb.transform.rotation.z));
+            
+    //         //rb.MoveRotation(rb.rotation * Quaternion.Euler(-rot));
+    //     }
+
+        
+    // }
+
     private void MovementDirection()
     {
-       if (hologram.positionDifference.y < -yMinThreshold)
+        //var savePos = rb.transform.rotation;
+        //rb.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+
+       if (tracker.localPosition.y < -yMinThreshold)
         {  //down
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(transform.up * currentFloatSpeed);
+            rb.AddForce(-rb.transform.up * currentFloatSpeed);
         }
 
-        if (hologram.positionDifference.y > yMinThreshold)
+        
+
+        if (tracker.localPosition.y > yMinThreshold)
         {  //up
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
-            rb.AddForce(-transform.up * currentFloatSpeed);
+            rb.AddForce(rb.transform.up * currentFloatSpeed);
         }
 
-        if (hologram.positionDifference.z < -zMinThreshold)
+        
+
+        if (tracker.localPosition.z < -zMinThreshold)
         {  //backward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
-            rb.AddForce(transform.forward * currentThrustSpeed);
+            
+            rb.AddForce(rb.transform.forward * currentThrustSpeed);
         }
 
-        if (hologram.positionDifference.z > zMinThreshold)
+        
+        if (tracker.localPosition.z > zMinThreshold)
         {  //forward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
-            rb.AddForce(-transform.forward * currentThrustSpeed);
+            
+            rb.AddForce(-rb.transform.forward * currentThrustSpeed);
         }
 
-        if (hologram.positionDifference.x < -xMinThreshold)
+        
+        Vector3 rot = new Vector3(0f, 0.5f, 0f);
+        if (tracker.localPosition.x < -xMinThreshold)
         {  //left
-            currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleLeftVelocity = new Vector3(0, currentRotateSpeed, 0);
-            Quaternion deltaLeftRotation = Quaternion.Euler(
-                    EulerAngleLeftVelocity * Time.fixedDeltaTime
-                );
-            rb.MoveRotation(rb.rotation * deltaLeftRotation);
+            // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
+            // EulerAngleLeftVelocity = new Vector3(0, currentRotateSpeed, 0);
+            // Quaternion deltaLeftRotation = Quaternion.Euler(
+            //         EulerAngleLeftVelocity * Time.fixedDeltaTime
+            //     );
+
+            
+            
+            //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y + 0.5f, rb.transform.rotation.z));
+
+            rb.transform.Rotate(0f, -0.6f, 0f, Space.Self);
+
+            
+            //rb.MoveRotation(rb.rotation * Quaternion.Euler(rot));
         }
 
-        if (hologram.positionDifference.x > xMinThreshold)
+        if (tracker.localPosition.x > xMinThreshold)
         {  //right
-            currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
-            EulerAngleRightVelocity = new Vector3(0, -currentRotateSpeed, 0);
-            Quaternion deltaRightRotation = Quaternion.Euler(
-                    EulerAngleRightVelocity * Time.fixedDeltaTime
-                );
+            // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
+            // EulerAngleRightVelocity = new Vector3(0, -currentRotateSpeed, 0);
+            // Quaternion deltaRightRotation = Quaternion.Euler(
+            //         EulerAngleRightVelocity * Time.fixedDeltaTime
+            //     );
 
-            rb.MoveRotation(rb.rotation * deltaRightRotation);
+            
+           
+            rb.transform.Rotate(0f, 0.6f, 0f, Space.Self);
+            
+            //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y - 0.1f, rb.transform.rotation.z));
+            
+            //rb.MoveRotation(rb.rotation * Quaternion.Euler(-rot));
         }
+
+        
     }
 
     // public void MoveUp()
