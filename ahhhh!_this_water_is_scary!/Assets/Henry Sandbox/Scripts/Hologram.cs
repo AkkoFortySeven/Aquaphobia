@@ -46,7 +46,7 @@ public class Hologram : MonoBehaviour
 
             if (interactable.attachedToHand)
          {
-            CheckHand();
+            //CheckHand();
              currentPosition = this.transform.parent.localPosition;
              positionDifference = hologramReferencePoint.transform.localPosition - currentPosition;
              ResetPlayerPosition();
