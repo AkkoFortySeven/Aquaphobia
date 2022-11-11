@@ -47,8 +47,8 @@ public class Hologram : MonoBehaviour
             if (interactable.attachedToHand)
          {
             CheckHand();
-             currentPosition = this.transform.parent.position;
-             positionDifference = hologramReferencePoint.transform.position - currentPosition;
+             currentPosition = this.transform.parent.localPosition;
+             positionDifference = hologramReferencePoint.transform.localPosition - currentPosition;
              ResetPlayerPosition();
          }
          else
@@ -57,17 +57,17 @@ public class Hologram : MonoBehaviour
          }
     }
 
-    void CheckHand()
-    {
-        if (trig.GetAxis(SteamVR_Input_Sources.RightHand) > triggerThreshold)
-        {
-            subEngine.MoveUp();
-        }
-        else if (trig.GetAxis(SteamVR_Input_Sources.LeftHand) > triggerThreshold)
-        {
-            subEngine.MoveDown();
-        }
-    }
+    // void CheckHand()
+    // {
+    //     if (trig.GetAxis(SteamVR_Input_Sources.RightHand) > triggerThreshold)
+    //     {
+    //         subEngine.MoveUp();
+    //     }
+    //     else if (trig.GetAxis(SteamVR_Input_Sources.LeftHand) > triggerThreshold)
+    //     {
+    //         subEngine.MoveDown();
+    //     }
+    // }
 
     // var connectedHand = interactable.attachedToHand.handType;
 

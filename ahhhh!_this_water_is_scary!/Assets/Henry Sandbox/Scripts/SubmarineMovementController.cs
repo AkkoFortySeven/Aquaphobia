@@ -86,7 +86,7 @@ public class SubmarineMovementController : MonoBehaviour
 
     private void MovementDirection()
     {
-       /* if (hologram.positionDifference.y < -yMinThreshold)
+       if (hologram.positionDifference.y < -yMinThreshold)
         {  //down
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
             rb.AddForce(transform.up * currentFloatSpeed);
@@ -96,7 +96,7 @@ public class SubmarineMovementController : MonoBehaviour
         {  //up
             currentFloatSpeed = Mathf.Lerp(minFloatSpeed, maxFloatSpeed, floatPercentageChange);
             rb.AddForce(-transform.up * currentFloatSpeed);
-        }*/
+        }
 
         if (hologram.positionDifference.z < -zMinThreshold)
         {  //backward
@@ -132,17 +132,17 @@ public class SubmarineMovementController : MonoBehaviour
         }
     }
 
-    public void MoveUp()
-    {
-        rb.AddForce(Vector3.up * maxFloatSpeed);
-        Debug.Log("RIGHT HAND ACTIVE");
-    }
+    // public void MoveUp()
+    // {
+    //     rb.AddForce(Vector3.up * maxFloatSpeed);
+    //     Debug.Log("RIGHT HAND ACTIVE");
+    // }
 
-    public void MoveDown()
-    {
-        rb.AddForce(-Vector3.up * maxFloatSpeed);
-        Debug.Log("LEFT HAND ACTIVE");
-    }
+    // public void MoveDown()
+    // {
+    //     rb.AddForce(-Vector3.up * maxFloatSpeed);
+    //     Debug.Log("LEFT HAND ACTIVE");
+    // }
 
     private void calculateLerpScale()
     {
