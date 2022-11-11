@@ -187,7 +187,7 @@ public class SubmarineMovementController : MonoBehaviour
         {  //backward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
             
-            rb.AddForce(rb.transform.forward * currentThrustSpeed);
+            rb.AddForce(-rb.transform.forward * currentThrustSpeed);
         }
 
         
@@ -195,7 +195,7 @@ public class SubmarineMovementController : MonoBehaviour
         {  //forward
             currentThrustSpeed = Mathf.Lerp(minThrustSpeed, maxThrustSpeed, thrustPercentageChange);
             
-            rb.AddForce(-rb.transform.forward * currentThrustSpeed);
+            rb.AddForce(rb.transform.forward * currentThrustSpeed);
         }
 
         
@@ -212,7 +212,7 @@ public class SubmarineMovementController : MonoBehaviour
             
             //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y + 0.5f, rb.transform.rotation.z));
 
-            rb.transform.Rotate(0f, -0.6f, 0f, Space.Self);
+            rb.transform.Rotate(0f, -rotatePercentageChange, 0f, Space.Self);
 
             
             //rb.MoveRotation(rb.rotation * Quaternion.Euler(rot));
@@ -228,7 +228,7 @@ public class SubmarineMovementController : MonoBehaviour
 
             
            
-            rb.transform.Rotate(0f, 0.6f, 0f, Space.Self);
+            rb.transform.Rotate(0f, rotatePercentageChange, 0f, Space.Self);
             
             //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y - 0.1f, rb.transform.rotation.z));
             
