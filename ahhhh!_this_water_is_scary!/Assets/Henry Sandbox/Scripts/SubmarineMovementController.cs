@@ -198,8 +198,7 @@ public class SubmarineMovementController : MonoBehaviour
             rb.AddForce(rb.transform.forward * currentThrustSpeed);
         }
 
-        
-        Vector3 rot = new Vector3(0f, 0.5f, 0f);
+        float dist = Vector3.Distance(tracker.position, hologram.hologramReferencePoint.transform.position);
         if (tracker.localPosition.x < -xMinThreshold)
         {  //left
             // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
@@ -212,12 +211,14 @@ public class SubmarineMovementController : MonoBehaviour
             
             //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y + 0.5f, rb.transform.rotation.z));
 
-            rb.transform.Rotate(0f, -rotatePercentageChange, 0f, Space.Self);
+            //rb.transform.Rotate(0f, -rotatePercentageChange, 0f, Space.Self);
+			rb.transform.Rotate(0f, tracker.localPosition.x, 0f, Space.Self);
 
             
             //rb.MoveRotation(rb.rotation * Quaternion.Euler(rot));
         }
 
+		
         if (tracker.localPosition.x > xMinThreshold)
         {  //right
             // currentRotateSpeed = Mathf.Lerp(minRotateSpeed, maxRotateSpeed, rotatePercentageChange);
@@ -228,7 +229,8 @@ public class SubmarineMovementController : MonoBehaviour
 
             
            
-            rb.transform.Rotate(0f, rotatePercentageChange, 0f, Space.Self);
+            //rb.transform.Rotate(0f, rotatePercentageChange, 0f, Space.Self);
+			rb.transform.Rotate(0f, tracker.localPosition.x, 0f, Space.Self);
             
             //rb.transform.rotation = Quaternion.Euler(new Vector3(rb.transform.rotation.x, rb.transform.rotation.y - 0.1f, rb.transform.rotation.z));
             
